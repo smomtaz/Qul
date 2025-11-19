@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn Quranic Arabic root words with interactive flashcards">
+    <meta name="theme-color" content="#1e3a5f">
+    <title>Quranic Arabic Roots - Flashcards</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                    Quranic Arabic Roots
+                </h1>
+                <div class="header-actions">
+                    <button class="icon-button" id="searchBtn" aria-label="Search">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-content">
+                    <div class="welcome-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <h2>Master Quranic Arabic</h2>
+                    <p>Learn the 100 most common root words from the Noble Quran with interactive flashcards</p>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">100</div>
+                            <div class="stat-label">Root Words</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">1,685</div>
+                            <div class="stat-label">Total Roots</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">75%</div>
+                            <div class="stat-label">Coverage</div>
+                        </div>
+                    </div>
+                    <button class="primary-button" id="startBtn">
+                        <span>Begin Learning</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="m9 18 6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flashcard-container" id="flashcardContainer" style="display: none;">
+                <div class="card-counter" id="cardCounter">1 / 100</div>
+                
+                <div class="flashcard" id="flashcard">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <div class="root-indicator">Root</div>
+                            <div class="arabic-text" id="arabicRoot">ع ل م</div>
+                            <div class="transliteration" id="transliteration">ʿ-l-m</div>
+                            <button class="flip-button" id="flipBtn">
+                                Show Meaning
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M16 3h5v5M4 20 20.2 3.8M21 16v5h-5M15 15l5.1 5.1"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="card-face card-back">
+                            <div class="meaning-section">
+                                <h3>Meaning</h3>
+                                <p class="meaning-text" id="meaning">Knowledge, to know, to learn</p>
+                            </div>
+                            <div class="forms-indicator">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                                </svg>
+                                <span id="formsCount">7</span> forms in Quran
+                            </div>
+                            <button class="secondary-button" id="viewFormsBtn">
+                                View All Forms
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="m9 18 6-6-6-6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <button class="action-button" id="prevBtn" aria-label="Previous card">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="m15 18-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <button class="action-button shuffle-btn" id="shuffleBtn" aria-label="Shuffle cards">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 3h5m0 0v5m0-5-6 6M4 20l5-5m-5 5h5m-5 0v-5"/>
+                        </svg>
+                    </button>
+                    <button class="action-button" id="nextBtn" aria-label="Next card">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="m9 18 6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal" id="formsModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>
+                            <span class="arabic-text modal-root" id="modalRoot">ع ل م</span>
+                            <span class="modal-subtitle">Word Forms in the Quran</span>
+                        </h2>
+                        <button class="close-button" id="closeModal" aria-label="Close">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M18 6 6 18M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="formsContent"></div>
+                </div>
+            </div>
+
+            <div class="modal" id="searchModal">
+                <div class="modal-content search-modal-content">
+                    <div class="modal-header">
+                        <h2>Search Roots</h2>
+                        <button class="close-button" id="closeSearch" aria-label="Close">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M18 6 6 18M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search by Arabic, transliteration, or meaning..." autocomplete="off">
+                    </div>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+        </main>
+
+        <div class="install-prompt" id="installPrompt" style="display: none;">
+            <div class="install-content">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 11l5 5 5-5m-5 5V3"/>
+                </svg>
+                <div>
+                    <h3>Install App</h3>
+                    <p>Add to home screen for offline access</p>
+                </div>
+            </div>
+            <div class="install-actions">
+                <button class="install-close" id="installClose">Maybe Later</button>
+                <button class="install-button" id="installBtn">Install</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
